@@ -9,6 +9,7 @@
       update: function(event, ui) {
         var item = ui.item.find('[data-sort-url]');
         var url = item.data('sort-url');
+        var redirect_after_sort = item.data('redirect-after-sort')
         var customParams = {};
         if (typeof item.data('sort-custom-params') === 'object') {
           customParams = item.data('sort-custom-params');
@@ -35,7 +36,9 @@
           data: $.extend(customParams, { position: newPosition }),
           error: function () { console.error('Saving sortable error'); },
           success: function () {
-            // location.href = location.href;
+            if (redirect_after_sort !== undefined || redirect_after_sort === true){
+              location.href = location.href;
+            }
           },
           async: false
         });

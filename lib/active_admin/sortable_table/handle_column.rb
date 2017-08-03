@@ -49,6 +49,7 @@ module ActiveAdmin
                     class: 'handle',
                     'data-sort-url' => options[:sort_url],
                     'data-position' => position,
+                    'data-redirect-after-sort' => options[:redirect_after_sort],
                     title: 'Drag to reorder'
                    )
       end
@@ -57,6 +58,7 @@ module ActiveAdmin
         link_to_if(options[:show_move_to_top_handle], options[:move_to_top_handle], options[:move_to_top_url],
                    method: :post,
                    class: 'move_to_top',
+                   remote: options[:remote],
                    title: 'Move to top') { '' }
       end
     end
